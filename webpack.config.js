@@ -14,7 +14,9 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
+                    // js -> inline-style 적용 시켜줌
                     'style-loader',
+                    // css -> js 실행순서 ⬆
                     'css-loader'
                 ]
             }
