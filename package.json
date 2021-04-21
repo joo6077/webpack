@@ -16,6 +16,7 @@
   "dependencies": {
     "@babel/cli": "^7.13.16",
     "@babel/core": "^7.13.16",
+    "@babel/plugin-transform-block-scoping": "^7.13.16",
     "axios": "^0.21.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.4",
