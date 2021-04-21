@@ -19,6 +19,12 @@ module.exports = {
                     // css -> js 실행순서 ⬆
                     'css-loader'
                 ]
+            },
+            {
+                test: /\.png$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
     },
