@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const childProcess = require('child_process')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: 'development',
@@ -26,7 +27,7 @@ module.exports = {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'url-loader', // base64로 변환
                 options: {
-                    publicPath: './dist/', // dist폴더 안에
+                    // publicPath: './dist/', // prefix
                     name: '[name].[ext]', // 이름.확장자
                     limit: 20000, // 20kb 초과 시 file-loader로
                 }
@@ -47,6 +48,10 @@ module.exports = {
         new webpack.DefinePlugin({
             TWO: '1+1',
             'api.domain': JSON.stringify('http://dev.api.domain.com')
+        }),
+        // html 파일을 빌드해주고 자동으로 js파일 연동시켜줌.
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
         })
     ]
 }
