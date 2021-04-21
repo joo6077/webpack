@@ -1,9 +1,3 @@
-import './app.css'
-import nyancat from './nyancat.jpg'
+import * as math from './math.js'
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.innerHTML = `
-        <img src="${nyancat}" />
-    `
-})
+console.log(math.sum(1, 3))
