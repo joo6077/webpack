@@ -21,10 +21,13 @@ module.exports = {
                 ]
             },
             {
-                test: /\.png$/,
-                use: [
-                    'file-loader'
-                ]
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'url-loader', // base64로 변환
+                options: {
+                    publicPath: './dist/', // dist폴더 안에
+                    name: '[name].[ext]', // 이름.확장자
+                    limit: 20000, // 20kb 초과 시 file-loader로
+                }
             }
         ]
     },

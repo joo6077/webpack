@@ -1,20 +1,9 @@
-// import './app.css'
-const axios = require('axios')
+import './app.css'
+import nyancat from './nyancat.jpg'
 
-axios.create({
-    baseURL: 'https://wmes.weedscomm.com'
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.innerHTML = `
+        <img src="${nyancat}" />
+    `
 })
-
-const url = '/api/authenticate'
-
-const getUser = async () => {
-    const res = await axios.get(
-        url,
-        {
-            username: 'admin',
-            password: '1234'
-        }
-    )
-    console.log(res)
-}
-getUser() /*? */
