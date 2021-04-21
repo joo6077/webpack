@@ -51,7 +51,14 @@ module.exports = {
         }),
         // html 파일을 빌드해주고 자동으로 js파일 연동시켜줌.
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './src/index.html',
+            templateParameters: {
+                env: process.env.NODE_ENV === 'development'? '(개발용)' : ''
+            },
+            minify: process.env.NODE_ENV === 'production' ? {
+                collapseWhitespace: true,
+                removeComments: true,
+            } : false
         })
     ]
 }
