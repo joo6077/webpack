@@ -1,5 +1,6 @@
 const path = require('path')
-const MyWebpackPlugin = require('./my-webpack-plugin')
+const webpack = require('webpack')
+const childProcess = require('child_process')
 
 module.exports = {
     mode: 'development',
@@ -33,6 +34,19 @@ module.exports = {
         ]
     },
     plugins: [
-        new MyWebpackPlugin()
+        // 웹팩 번들 전 배너 주석
+        // childProcess 터미널 명령어 접근 가능.
+        new webpack.BannerPlugin({
+            banner: `
+                Build Date: ${new Date().toLocaleString()}
+                Commit Version: ${childProcess.execSync('git rev-parse --short HEAD')}
+                Author: ${childProcess.execSync('git config user.name')}
+            `
+        }),
+        // 전역 변수처럼 사용 가능.
+        new webpack.DefinePlugin({
+            TWO: '1+1',
+            'api.domain': JSON.stringify('http://dev.api.domain.com')
+        })
     ]
 }
