@@ -6,6 +6,11 @@ module.exports = {
             targets: {
                 chrome: '79',
                 ie: '11'
+            },
+            // promise 지원
+            useBuiltIns: 'usage', // 'entry', false
+            corejs: {
+                version: 2
             }
         }]
     ]

@@ -1,1 +1,3 @@
-new Promise()
+var foo = "";
+
+console.log();;;;;;;;;;
