@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const childProcess = require('child_process')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     mode: 'development',
@@ -18,8 +19,9 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    // js -> inline-style 적용 시켜줌
-                    'style-loader',
+                    process.env.NODE_ENV === 'production'
+                        ? MiniCssExtractPlugin.loader
+                        : 'style-loader',
                     // css -> js 실행순서 ⬆
                     'css-loader'
                 ]
@@ -62,6 +64,9 @@ module.exports = {
             } : false
         }),
         // dist 파일 초기화 및 다시 생성
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        process.env.NODE_ENV === 'production'
+            ? new MiniCssExtractPlugin({filename: '[name].css'})
+            : []
     ]
 }
